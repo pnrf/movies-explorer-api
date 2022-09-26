@@ -4,14 +4,13 @@ const isEmail = require('validator/lib/isEmail');
 const { AuthError } = require('../errors/index');
 
 const userSchema = new mongoose.Schema({
-
   email: {
     type: String,
     required: true,
     unique: true,
     validate: {
       validator: (email) => isEmail(email),
-      message: 'Некорректый адрес почты',
+      message: 'Невалидный email',
     },
   },
   password: {
