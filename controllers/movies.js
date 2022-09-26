@@ -45,7 +45,7 @@ const deleteMovie = (req, res, next) => {
       if (movie.owner.toString() === userId) {
         return Movie
           .findByIdAndRemove(movieId)
-          .then((removedMovie) => res.send(removedMovie))
+          .then(() => res.send({ message: 'Фильм успешно удален' }))
           .catch(next);
       }
       throw new ForbiddenError('Попытка удалить чужой фильм. В доступе отказано');
