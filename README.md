@@ -30,6 +30,6 @@
 - репозиторий backend: [movies-explorer-api](https://github.com/pnrf/movies-explorer-api)
 - репозиторий frontend: [movies-explorer-frontend](https://github.com/pnrf/movies-explorer-frontend)
 - cсылки на сайт, размещенный в Яндекс.Облаке:
-  - Public IP Address:
-  - Frontend:
-  - Backend:
+  - Public IP Address: `51.250.79.113`
+  - Frontend: `pankratov.nomorepartiesxyz.ru`
+  - Backend: `api.pankratov.nomorepartiesxyz.ru`
