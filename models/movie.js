@@ -46,11 +46,11 @@ const movieSchema = new mongoose.Schema({
       message: 'Невалидный URL',
     },
   },
-  // owner: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'user',
-  //   required: true,
-  // },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
+  },
   movieId: {
     type: String,
     required: true,
