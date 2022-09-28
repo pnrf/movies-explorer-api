@@ -47,20 +47,13 @@ const login = (req, res, next) => {
 const getCurrentUser = (req, res, next) => {
   const userId = req.user._id;
 
-  User.findById(userId)
+  User
+    .findById(userId)
     .orFail(() => {
       throw new NotFoundError('Пользователь по указанному _id не найден');
     })
     .then((user) => res.send(user))
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        throw new BadRequestError(`Переданы некорректные данные о текущем пользователе -- ${err.name}`);
-      } else if (err.name === 'NotFound') {
-        throw new NotFoundError('Пользователь по указанному _id не найден');
-      } else {
-        next(err);
-      }
-    });
+    .catch(next);
 };
 
 const updateUserProfile = (req, res, next) => {
@@ -80,6 +73,8 @@ const updateUserProfile = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
         throw new BadRequestError(`Переданы некорректные данные при обновлении профиля -- ${err.name}`);
+      } else if (err.code === 11000) {
+        throw new ConflictError('Пользователь с таким email уже существует');
       } else {
         next(err);
       }
