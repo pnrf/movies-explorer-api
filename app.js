@@ -13,7 +13,7 @@ const { limiter } = require('./middlewares/rateLimiter');
 const app = express();
 const routes = require('./routes');
 
-const { PORT = 3000, DB_PATH = 'mongodb://localhost:27017/moviesdb' } = process.env;
+const { PORT = 3001, DB_PATH = 'mongodb://localhost:27017/moviesdb' } = process.env;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
